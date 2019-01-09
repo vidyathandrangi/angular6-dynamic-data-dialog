@@ -1,0 +1,24 @@
+<div class="dialog-table">
+
+  <mat-form-field>
+    <input matInput (keyup)="applySearch($event.target.value)" placeholder="FilterSearch">
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <mat-icon class="dialog-close" (click)="onNoClick()">clear</mat-icon>
+  </div>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container *ngFor="let column of data.columns" matColumnDef="{{column}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column | titlecase}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="data.columns"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: data.columns"></mat-row>
+
+  </mat-table>
+
+</div>

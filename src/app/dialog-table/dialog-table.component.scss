@@ -1,0 +1,10 @@
+.dialog-table {
+  position: relative;
+
+  .dialog-close {
+   position: absolute;
+   right: 0;
+   top: 0;
+   cursor: pointer;
+  }
+}
